@@ -16,5 +16,10 @@ namespace bank_mangement_system
         {
             InitializeComponent();
         }
+
+        private void PictureBox4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace bank_mangement_system
             }
             finally
             {
-                conn.Close();
+                Close_connection();
             }
         }
 

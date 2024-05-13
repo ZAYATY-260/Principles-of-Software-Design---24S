@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bank_mangement_system.Repo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,8 +18,7 @@ namespace bank_mangement_system
         {
             InitializeComponent();
         }
-
-       
+     
 
         private void PictureBox2_Click_1(object sender, EventArgs e)
         {
@@ -27,11 +27,36 @@ namespace bank_mangement_system
 
         private void Login_button_Click_1(object sender, EventArgs e)
         {
-             DBconfig DB = new DBconfig();
-            DB.Open_connection();
-            string insertQuery = $"INSERT INTO AdminTbl (AdName, AdPass) VALUES ('{userINP.Text}', '{passINP.Text}')";
-            DB.Insert_data(insertQuery);
-            DB.Close_connection();
+            Validation val = new Validation();
+            
+            if (val.Login_validation(userINP.Text, passINP.Text))
+            {
+                User user = new User();
+
+                user.SetUsername(userINP.Text);
+                user.SetPassword(passINP.Text);
+
+                UserRepository userrepo = new UserRepository();
+                bool Found = userrepo.SearchPersons(user);
+                if(Found)
+                {
+                    MessageBox.Show("Login succesfully.");
+                    Mainmenu Obj = new Mainmenu();
+                    Obj.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Access denied!.");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Fill all the form!.");
+            }
+            
+            
         }
 
 

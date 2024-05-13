@@ -8,24 +8,17 @@ namespace bank_mangement_system
 {
     class Validation
     {
-        String Message;
 
-        public String Login_validation(String username , String Password)
+
+        public bool Login_validation(String username , String Password)
         {
-            if (username == "" && Password == "")
+            bool done = true;
+            if (username == "" || Password == "")
             {
-                Message = "Please fill the Form !";
-            }
-            else if (username == "")
-            {
-                Message = "username is empty !";
-            }
-            else
-            {
-                Message = "password is empty !";
+                done = false;
             }
 
-            return Message;
+            return done;
         }
 
 
