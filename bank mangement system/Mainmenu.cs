@@ -21,5 +21,12 @@ namespace bank_mangement_system
         {
             this.Close();
         }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Accounts acc = new Accounts();
+            acc.Show();
+        }
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts.Designer.cs">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="AESEncryption.cs" />
     <Compile Include="DBconfig.cs" />
     <Compile Include="Form1.cs">
@@ -71,6 +77,9 @@
     <Compile Include="Repo\UserRepository.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Validation.cs" />
+    <EmbeddedResource Include="Accounts.resx">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

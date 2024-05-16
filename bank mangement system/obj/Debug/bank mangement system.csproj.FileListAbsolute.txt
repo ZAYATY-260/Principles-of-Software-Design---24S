@@ -10,3 +10,4 @@ C:\Users\Zeyad\source\repos\bank mangement system\bank mangement system\obj\Debu
 C:\Users\Zeyad\source\repos\bank mangement system\bank mangement system\obj\Debug\bank mangement system.exe
 C:\Users\Zeyad\source\repos\bank mangement system\bank mangement system\obj\Debug\bank mangement system.pdb
 C:\Users\Zeyad\source\repos\bank mangement system\bank mangement system\obj\Debug\bank_mangement_system.Mainmenu.resources
+C:\Users\Zeyad\source\repos\bank mangement system\bank mangement system\obj\Debug\bank_mangement_system.Accounts.resources

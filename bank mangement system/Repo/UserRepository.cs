@@ -92,30 +92,30 @@ namespace bank_mangement_system.Repo
         //        }
         //    }
 
-        //    public List<User> GetAllPersons()
-        //    {
-        //        List<Person> persons = new List<Person>();
-        //        using (var connection = new MySqlConnection(connectionString))
-        //        {
-        //            connection.Open();
-        //            string query = "SELECT Id, Name, Age FROM Persons";
-        //            MySqlCommand command = new MySqlCommand(query, connection);
-        //            using (MySqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    persons.Add(new Person
-        //                    {
-        //                        Id = reader.GetInt32("Id"),
-        //                        Name = reader.GetString("Name"),
-        //                        Age = reader.GetInt32("Age")
-        //                    });
-        //                }
-        //            }
-        //        }
-        //        return User;
-        //    }
-        //}
+        public List<User> GetAllPersons()
+        {
+            DBconfig Db = new DBconfig();
+            Db.Open_connection();
+            AESEncryption aesEncryption = new AESEncryption();
+            List<User> users = new List<User>();
+            string query = "SELECT ADId, AdName FROM AdminTbl";
+            SqlCommand command = new SqlCommand(query, Db.Get_Conn());
 
-    }
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    User user = new User();
+                    user.SetId(reader.GetInt32(reader.GetOrdinal("AdId")));
+                    user.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdName"))));
+                    users.Add(user);
+
+                    Debug.WriteLine("User found in the database.");
+                }
+            }
+            Debug.WriteLine(users);
+            return users;
+        }
+
+}
 }
