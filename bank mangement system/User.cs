@@ -65,6 +65,9 @@ namespace bank_mangement_system
             Password = password;
             Type = type;
         }
+
+    
+
         public static User Instance
         {
             get

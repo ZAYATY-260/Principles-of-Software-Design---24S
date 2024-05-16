@@ -65,7 +65,42 @@ namespace bank_mangement_system.Repo
             return userFound;
         }
 
+        public User GetPerson(User person)
+        {
+            bool userFound = false;
+            DBconfig Db = new DBconfig();
+            Db.Open_connection();
+            AESEncryption aesEncryption = new AESEncryption();
 
+            string query = "SELECT  AdId,AdName, AdPass, AdType FROM AdminTbl WHERE AdName LIKE @SearchTerm";
+            SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+            command.Parameters.AddWithValue("@SearchTerm", "%" + aesEncryption.Encrypt(person.GetUsername()) + "%");
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    userFound = true;
+
+                    // Set the values to the user object if needed
+                    person.SetId(reader.GetInt32(reader.GetOrdinal("AdId")));
+                    person.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdName"))));
+                    person.SetPassword(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdPass"))));
+                    person.Settype(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdType"))));
+
+                    Debug.WriteLine("User found in the database.");
+                }
+            }
+
+            // Check if user was found
+            if (!userFound)
+            {
+                Debug.WriteLine("User not found in the database.");
+            }
+            Db.Close_connection();
+
+            return person;
+        }
         //    public void EditPerson(User person)
         //    {
         //        using (var connection = new MySqlConnection(connectionString))

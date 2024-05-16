@@ -1,4 +1,5 @@
-﻿using bank_mangement_system.Repo;
+﻿using bank_mangement_system.Model;
+using bank_mangement_system.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,25 +26,47 @@ namespace bank_mangement_system
 
         private void BindGrid()
         {
+            
             try
             {
                 UserRepository repo = new UserRepository();
                 List<User> users = repo.GetAllPersons();
 
+                CustomerRepository custrepo = new CustomerRepository();
+                List<Customer> customers = custrepo.GetAllCustomers();
+
                 if (users != null && users.Count > 0)
                 {
-                    // Clear existing columns
+                    
                     dataGridView1.Columns.Clear();
 
-                    // Add columns
+                    
                     dataGridView1.Columns.Add("IDColumn", "ID");
                     dataGridView1.Columns.Add("UsernameColumn", "Username");
+                    dataGridView1.Columns.Add("PositionColumn", "Type");
+                    dataGridView1.Columns.Add("AddressColumn", "Address");
+                    dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
+                    dataGridView1.Columns.Add("PositionColumn", "Position");
 
-                    // Bind data
-                    dataGridView1.Rows.Clear(); // Clear existing rows
+                    dataGridView1.Rows.Clear();
                     foreach (var user in users)
                     {
-                        dataGridView1.Rows.Add(user.GetId(), user.GetUsername());
+                        foreach (var customer in customers)
+                        {
+                            if (user.GetId() == customer.GetCust_id())
+                            {
+                                dataGridView1.Rows.Add
+                                (
+                                    user.GetId(), 
+                                    user.GetUsername(),
+                                    user.Gettype(),
+                                    customer.GetAddress(),
+                                    customer.GetMobilePhone(),
+                                    customer.GetPosition()
+                                );
+                            }
+                        }
+
                     }
                 }
                 else
@@ -60,6 +83,25 @@ namespace bank_mangement_system
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Add_customer_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.SetUsername(Username.Text);
+            user.SetPassword(Password.Text);
+            user.Settype("CUST");
+
+            UserRepository userrepo = new UserRepository();
+            userrepo.AddPerson(user);
+            user = userrepo.GetPerson(user);
+
+            Customer customer = new Customer(user.GetId(),user.GetUsername() , user.GetPassword() ,user.Gettype() , Mobilenumber.Text , Address.Text , Position.Text);
+            CustomerRepository custrepo = new CustomerRepository();
+            custrepo.AddCustomer(customer);
+
+            //refresh
+            BindGrid();
         }
     }
 }
