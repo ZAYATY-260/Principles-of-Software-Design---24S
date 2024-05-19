@@ -24,3 +24,10 @@ C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement
 C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.csproj.CoreCompileInputs.cache
 C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.exe
 C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.pdb
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.settimgs.resources
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.transactions.resources
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\bin\Debug\bank mangement system.exe.manifest
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\bin\Debug\bank mangement system.application
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.TrustInfo.xml
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.exe.manifest
+C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.application

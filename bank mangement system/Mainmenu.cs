@@ -48,5 +48,19 @@ namespace bank_mangement_system
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            transactions obj = new transactions();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            settimgs obj = new settimgs();
+            obj.Show();
+            this.Hide();
+        }
     }
 }
