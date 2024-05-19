@@ -11,3 +11,16 @@ C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement s
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.csproj.CoreCompileInputs.cache
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.exe
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.pdb
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\bin\Debug\bank mangement system.exe.config
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\bin\Debug\bank mangement system.exe
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\bin\Debug\bank mangement system.pdb
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.csproj.AssemblyReference.cache
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank_mangement_system.Accounts.resources
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank_mangement_system.Form1.resources
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank_mangement_system.Login.resources
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank_mangement_system.Mainmenu.resources
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank_mangement_system.Properties.Resources.resources
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.csproj.GenerateResource.cache
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.csproj.CoreCompileInputs.cache
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.exe
+C:\Users\Egy Sky\Desktop\omz bank\bank mangement system\obj\Debug\bank mangement system.pdb
