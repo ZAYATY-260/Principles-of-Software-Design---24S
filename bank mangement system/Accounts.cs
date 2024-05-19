@@ -17,6 +17,7 @@ namespace bank_mangement_system
         public Accounts()
         {
             InitializeComponent();
+            Accounttype.DataSource = Enum.GetValues(typeof(AccountType));
         }
 
         private void Accounts_Load(object sender, EventArgs e)
@@ -35,48 +36,58 @@ namespace bank_mangement_system
                 CustomerRepository custrepo = new CustomerRepository();
                 List<Customer> customers = custrepo.GetAllCustomers();
 
+                BankRepository accountsrepo = new BankRepository();
+                List<BankAccount> accounts = accountsrepo.GetAllAccounts();
+
                 if (users != null && users.Count > 0)
-                {
+               {
                     
                     dataGridView1.Columns.Clear();
 
                     
                     dataGridView1.Columns.Add("IDColumn", "ID");
+                    dataGridView1.Columns.Add("AccountNumberColumn", "AccountNumber");
                     dataGridView1.Columns.Add("UsernameColumn", "Username");
                     dataGridView1.Columns.Add("PositionColumn", "Type");
                     dataGridView1.Columns.Add("AddressColumn", "Address");
-                    dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
-                    dataGridView1.Columns.Add("PositionColumn", "Position");
+                   dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
+                   dataGridView1.Columns.Add("PositionColumn", "Position");
+                    dataGridView1.Columns.Add("BalanceColumn", "Balance");
 
                     dataGridView1.Rows.Clear();
                     foreach (var user in users)
                     {
                         foreach (var customer in customers)
                         {
-                            if (user.GetId() == customer.GetCust_id())
-                            {
-                                dataGridView1.Rows.Add
-                                (
-                                    user.GetId(), 
-                                    user.GetUsername(),
-                                    user.Gettype(),
-                                    customer.GetAddress(),
-                                    customer.GetMobilePhone(),
-                                    customer.GetPosition()
-                                );
+                            foreach (var account in accounts)
+                           {
+                                if (user.GetId() == customer.GetCust_id() && customer.GetCust_id() == account.Customerid)
+                                {
+                                    dataGridView1.Rows.Add
+                                    (
+                                        user.GetId(),
+                                        account.AccountNumber,
+                                        user.GetUsername(),
+                                        user.Gettype(),
+                                        customer.GetAddress(),
+                                        customer.GetMobilePhone(),
+                                        customer.GetPosition(),
+                                        account.Balance
+                                    );
+                             }
                             }
                         }
 
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No users found.");
-                }
+                   }
+               }
+               else
+              {
+                  MessageBox.Show("No users found.");
+            }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+              MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
 
@@ -100,7 +111,40 @@ namespace bank_mangement_system
             CustomerRepository custrepo = new CustomerRepository();
             custrepo.AddCustomer(customer);
 
-            //refresh
+            try
+            {
+                // Validate the selected item and balance input
+                if (Accounttype.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select an account type.");
+                    return;
+                }
+
+                if (!decimal.TryParse(Balance.Text, out decimal initialBalance))
+                {
+                    MessageBox.Show("Please enter a valid balance amount.");
+                    return;
+                }
+
+                // Convert selected item to AccountType enum
+                AccountType type = (AccountType)Accounttype.SelectedItem;
+
+
+                // Create the bank account using the factory
+                BankAccount account = BankAccountFactory.CreateAccount(customer, type, initialBalance);
+
+                // Save the account to the repository
+                BankRepository bankRepository = new BankRepository();
+                bankRepository.AddAccount(account);
+
+                // Display success message
+                MessageBox.Show($"Account created successfully!\nAccount Number:");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
             BindGrid();
         }
     }

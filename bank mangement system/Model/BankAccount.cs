@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace bank_mangement_system.Model
 {
-    public enum AccountType
-    {
-        Checking,
-        Savings
-    }
     class BankAccount
     {
-            public int AccountNumber { get; }
-            public AccountType Type { get; }
-            public decimal Balance { get; private set; }
-            public Customer Owner { get; }
+            public int Customerid   { get; set; }
+            public int AccountNumber { get; set; }
+            public AccountType Type { get; set; }
+            public decimal Balance { get;  set; }
+            public Customer Owner { get; set; }
 
             public BankAccount(Customer owner, int accountNumber, AccountType type, decimal initialBalance)
             {
@@ -26,7 +22,11 @@ namespace bank_mangement_system.Model
                 Owner = owner;
             }
 
-            public void Deposit(decimal amount)
+        public BankAccount()
+        {
+        }
+
+        public void Deposit(decimal amount)
             {
                 Balance += amount;
                 Console.WriteLine($"Deposited {amount:C}. New balance: {Balance:C}");
