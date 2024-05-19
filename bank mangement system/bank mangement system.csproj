@@ -54,21 +54,15 @@
     </Compile>
     <Compile Include="AESEncryption.cs" />
     <Compile Include="DBconfig.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form1.cs" />
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Login.cs" />
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mainmenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Mainmenu.cs" />
     <Compile Include="Mainmenu.Designer.cs">
       <DependentUpon>Mainmenu.cs</DependentUpon>
     </Compile>
@@ -81,6 +75,18 @@
     <Compile Include="Repo\BankRepository.cs" />
     <Compile Include="Repo\CustomerRepository.cs" />
     <Compile Include="Repo\UserRepository.cs" />
+    <Compile Include="settimgs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="settimgs.Designer.cs">
+      <DependentUpon>settimgs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transactions.Designer.cs">
+      <DependentUpon>transactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Accounts.resx">
@@ -104,6 +110,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="settimgs.resx">
+      <DependentUpon>settimgs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transactions.resx">
+      <DependentUpon>transactions.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
