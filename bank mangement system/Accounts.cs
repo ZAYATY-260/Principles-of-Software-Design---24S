@@ -147,5 +147,15 @@ namespace bank_mangement_system
 
             BindGrid();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
