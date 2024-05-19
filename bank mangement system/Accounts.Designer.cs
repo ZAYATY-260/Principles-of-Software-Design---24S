@@ -193,7 +193,7 @@ namespace bank_mangement_system
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(210, 240);
+            this.dataGridView1.Location = new System.Drawing.Point(191, 302);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
@@ -205,15 +205,16 @@ namespace bank_mangement_system
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(923, 341);
+            this.dataGridView1.Size = new System.Drawing.Size(744, 341);
             this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Add_customer
             // 
             this.Add_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
             this.Add_customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add_customer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Add_customer.Location = new System.Drawing.Point(222, 324);
+            this.Add_customer.Location = new System.Drawing.Point(222, 256);
             this.Add_customer.Name = "Add_customer";
             this.Add_customer.Size = new System.Drawing.Size(132, 40);
             this.Add_customer.TabIndex = 21;
@@ -281,7 +282,7 @@ namespace bank_mangement_system
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(451, 324);
+            this.button1.Location = new System.Drawing.Point(451, 256);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 40);
             this.button1.TabIndex = 30;
@@ -293,7 +294,7 @@ namespace bank_mangement_system
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(664, 324);
+            this.button2.Location = new System.Drawing.Point(664, 256);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 40);
             this.button2.TabIndex = 31;
@@ -305,7 +306,7 @@ namespace bank_mangement_system
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Blackadder ITC", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(8, 199);
+            this.label8.Location = new System.Drawing.Point(8, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 34);
             this.label8.TabIndex = 15;
@@ -315,7 +316,7 @@ namespace bank_mangement_system
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 97);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 166);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(144, 99);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -329,7 +330,7 @@ namespace bank_mangement_system
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(-2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(187, 594);
+            this.panel1.Size = new System.Drawing.Size(187, 759);
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -337,7 +338,7 @@ namespace bank_mangement_system
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 411);
+            this.ClientSize = new System.Drawing.Size(940, 664);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Balance);

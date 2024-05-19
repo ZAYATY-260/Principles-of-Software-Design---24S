@@ -157,5 +157,10 @@ namespace bank_mangement_system
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
