@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bank mangement system"
+    "\\bank mangement system",
+    "\\bank mangement system\\Model",
+    "\\bank mangement system\\Repo"
   ],
   "SelectedNode": "\\bank mangement system.sln",
   "PreviewInSolutionExplorer": false
