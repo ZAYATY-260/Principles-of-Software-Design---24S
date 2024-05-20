@@ -28,41 +28,67 @@ namespace bank_mangement_system.Repo
             Db.Close_connection();
         }
 
-        //public bool SearchCustomer(Customer customer)
-        //{
-        //    bool customerFound = false;
-        //    DBconfig Db = new DBconfig();
-        //    Db.Open_connection();
-        //    AESEncryption aesEncryption = new AESEncryption();
+        public BankAccount SearchAccount(int Accountnumber)
+        {
 
-        //    string query = "SELECT CustId, CustName, Address, MobilePhone FROM CustomerTbl WHERE CustName LIKE @SearchTerm";
-        //    SqlCommand command = new SqlCommand(query, Db.Get_Conn());
-        //    command.Parameters.AddWithValue("@SearchTerm", "%" + aesEncryption.Encrypt(customer.GetUsername()) + "%");
+            BankAccount account = new BankAccount();
+            DBconfig Db = new DBconfig();
+            Db.Open_connection();
 
-        //    using (SqlDataReader reader = command.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            customerFound = true;
-        //            customer.SetId(reader.GetInt32(reader.GetOrdinal("CustId")));
-        //            customer.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("CustName"))));
-        //            customer.Address = aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("Address")));
-        //            customer.MobilePhone = aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("MobilePhone")));
+            string query = "SELECT Accountnum , balance FROM Accounts WHERE Accountnum LIKE @account";
+            SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+            command.Parameters.AddWithValue("@account", "%" + Accountnumber + "%");
 
-        //            Debug.WriteLine("Customer found in the database.");
-        //        }
-        //    }
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                { 
+                    account.AccountNumber = reader.GetInt32(reader.GetOrdinal("Accountnum"));
+                    account.Balance = reader.GetDecimal(reader.GetOrdinal("balance"));
+                    Debug.WriteLine("Customer found in the database.");
+                }
+            }
 
-        //    if (!customerFound)
-        //    {
-        //        Debug.WriteLine("Customer not found in the database.");
-        //    }
-        //    Db.Close_connection();
+            Db.Close_connection();
 
-        //    return customerFound;
-        //}
+            return account;
+        }
 
-        public List<BankAccount> GetAllAccounts()
+
+
+        public bool Transfer(int From , int To , decimal amount)
+        {
+            if (SearchAccount(From) != null || SearchAccount(To) != null)
+            {
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
+
+                BankAccount account_from = SearchAccount(From);
+                BankAccount account_to = SearchAccount(To);
+
+                account_from.Withdraw(amount);
+                account_to.Deposit(amount);
+
+
+                string query = "INSERT INTO [History] ([From], [To], [Amount]) VALUES (@Fromdata, @Todata, @Amountdata)";
+                SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+                command.Parameters.AddWithValue("@Fromdata", From);
+                command.Parameters.AddWithValue("@Todata", To);
+                command.Parameters.AddWithValue("@Amountdata", amount);
+                command.ExecuteNonQuery();
+
+
+                Db.Close_connection();
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+            public List<BankAccount> GetAllAccounts()
         {
             DBconfig Db = new DBconfig();
             Db.Open_connection();

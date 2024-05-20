@@ -56,14 +56,14 @@ namespace bank_mangement_system
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.AccountFrom = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.Amountfield = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.AccountTo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Transfer = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -346,18 +346,25 @@ namespace bank_mangement_system
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.AccountFrom);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Controls.Add(this.textBox7);
+            this.panel5.Controls.Add(this.Amountfield);
             this.panel5.Controls.Add(this.label11);
-            this.panel5.Controls.Add(this.textBox5);
             this.panel5.Controls.Add(this.label12);
-            this.panel5.Controls.Add(this.textBox6);
+            this.panel5.Controls.Add(this.AccountTo);
             this.panel5.Controls.Add(this.label13);
-            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.Transfer);
             this.panel5.Location = new System.Drawing.Point(218, 429);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(841, 187);
             this.panel5.TabIndex = 49;
+            // 
+            // AccountFrom
+            // 
+            this.AccountFrom.Location = new System.Drawing.Point(160, 48);
+            this.AccountFrom.Name = "AccountFrom";
+            this.AccountFrom.Size = new System.Drawing.Size(180, 20);
+            this.AccountFrom.TabIndex = 51;
             // 
             // label14
             // 
@@ -370,12 +377,12 @@ namespace bank_mangement_system
             this.label14.TabIndex = 50;
             this.label14.Text = "Amount";
             // 
-            // textBox7
+            // Amountfield
             // 
-            this.textBox7.Location = new System.Drawing.Point(628, 65);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(180, 20);
-            this.textBox7.TabIndex = 49;
+            this.Amountfield.Location = new System.Drawing.Point(628, 65);
+            this.Amountfield.Name = "Amountfield";
+            this.Amountfield.Size = new System.Drawing.Size(180, 20);
+            this.Amountfield.TabIndex = 49;
             // 
             // label11
             // 
@@ -388,13 +395,6 @@ namespace bank_mangement_system
             this.label11.TabIndex = 48;
             this.label11.Text = "To";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(160, 49);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(180, 20);
-            this.textBox5.TabIndex = 47;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -406,12 +406,12 @@ namespace bank_mangement_system
             this.label12.TabIndex = 46;
             this.label12.Text = "From";
             // 
-            // textBox6
+            // AccountTo
             // 
-            this.textBox6.Location = new System.Drawing.Point(160, 84);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(180, 20);
-            this.textBox6.TabIndex = 44;
+            this.AccountTo.Location = new System.Drawing.Point(160, 84);
+            this.AccountTo.Name = "AccountTo";
+            this.AccountTo.Size = new System.Drawing.Size(180, 20);
+            this.AccountTo.TabIndex = 44;
             // 
             // label13
             // 
@@ -424,17 +424,18 @@ namespace bank_mangement_system
             this.label13.TabIndex = 43;
             this.label13.Text = "Transfer";
             // 
-            // button4
+            // Transfer
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
-            this.button4.Font = new System.Drawing.Font("Algerian", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(656, 122);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 40);
-            this.button4.TabIndex = 45;
-            this.button4.Text = "Transfer";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Transfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
+            this.Transfer.Font = new System.Drawing.Font("Algerian", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Transfer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Transfer.Location = new System.Drawing.Point(656, 122);
+            this.Transfer.Name = "Transfer";
+            this.Transfer.Size = new System.Drawing.Size(132, 40);
+            this.Transfer.TabIndex = 45;
+            this.Transfer.Text = "Transfer";
+            this.Transfer.UseVisualStyleBackColor = false;
+            this.Transfer.Click += new System.EventHandler(this.Transfer_Click);
             // 
             // pictureBox2
             // 
@@ -507,17 +508,17 @@ namespace bank_mangement_system
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox AccountTo;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Transfer;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox Amountfield;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox AccountFrom;
     }
 }

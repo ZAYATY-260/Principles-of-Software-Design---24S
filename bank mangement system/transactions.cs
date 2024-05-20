@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bank_mangement_system.Repo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,5 +29,33 @@ namespace bank_mangement_system
             Mainmenu obj = new Mainmenu();
             obj.Show();
         }
+
+        private void Transfer_Click(object sender, EventArgs e)
+        {
+            BankRepository bankrepo = new BankRepository();
+
+            int From;
+            bool AccountFromisParsed = int.TryParse(AccountFrom.Text, out From);
+
+            decimal Amount;
+            bool AmountisParsed = decimal.TryParse(Amountfield.Text, out Amount);
+
+            int To;
+            bool AccountToisParsed = int.TryParse(AccountTo.Text, out To);
+
+            if(bankrepo.Transfer(From, To, Amount))
+            {
+                MessageBox.Show("Money Sent");
+            }
+            else
+            {
+                MessageBox.Show("Error ");
+            }
+
+            
+
+        }
+
+
     }
 }
