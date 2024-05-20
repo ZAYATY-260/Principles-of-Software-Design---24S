@@ -3,7 +3,6 @@ C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement s
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\bin\Debug\bank mangement system.pdb
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.csproj.AssemblyReference.cache
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Accounts.resources
-C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Form1.resources
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Login.resources
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Mainmenu.resources
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Properties.Resources.resources
@@ -31,3 +30,4 @@ C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement s
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.TrustInfo.xml
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.exe.manifest
 C:\Users\Zeyad\Source\Repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank mangement system.application
+C:\Users\Zeyad\source\repos\Principles-of-Software-Design---24S\bank mangement system\obj\Debug\bank_mangement_system.Loading.resources

@@ -17,29 +17,16 @@ namespace bank_mangement_system
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            Mainmenu obj = new Mainmenu();
+            obj.Show();
         }
     }
 }

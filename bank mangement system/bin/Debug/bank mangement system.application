@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="bank mangement system.exe.manifest" size="4645">
+    <dependentAssembly dependencyType="install" codebase="bank mangement system.exe.manifest" size="4646">
       <assemblyIdentity name="bank mangement system.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XNjxv5sk/WjGoFRfZNx6w1qbymN3Vf1Mbj9WJX72WQ8=</dsig:DigestValue>
+        <dsig:DigestValue>gYVA2KiAogTU2jx1hOwh0M2vkU0LXoWt18dUbV6s0z0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

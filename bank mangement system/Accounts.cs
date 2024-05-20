@@ -96,49 +96,59 @@ namespace bank_mangement_system
             this.Close();
         }
 
+        public void reset()
+        {
+            Username.Text = string.Empty;
+            Password.Text = string.Empty;
+            Mobilenumber.Text = string.Empty;
+            Address.Text = string.Empty;
+            Position.Text = string.Empty;
+            Balance.Text = string.Empty;
+        }
+
         private void Add_customer_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.SetUsername(Username.Text);
-            user.SetPassword(Password.Text);
-            user.Settype("CUST");
-
-            UserRepository userrepo = new UserRepository();
-            userrepo.AddPerson(user);
-            user = userrepo.GetPerson(user);
-
-            Customer customer = new Customer(user.GetId(),user.GetUsername() , user.GetPassword() ,user.Gettype() , Mobilenumber.Text , Address.Text , Position.Text);
-            CustomerRepository custrepo = new CustomerRepository();
-            custrepo.AddCustomer(customer);
-
             try
             {
-                // Validate the selected item and balance input
-                if (Accounttype.SelectedItem == null)
+                decimal parsedBalance;
+                bool isParsed = decimal.TryParse(Balance.Text, out parsedBalance);
+                if (Accounttype.SelectedItem != null && isParsed &&  !String.IsNullOrWhiteSpace(Password.Text)
+                    && !String.IsNullOrWhiteSpace(Username.Text) &&  !String.IsNullOrWhiteSpace(Mobilenumber.Text)
+                    && !String.IsNullOrWhiteSpace(Address.Text)  &&  !String.IsNullOrWhiteSpace(Position.Text))
                 {
-                    MessageBox.Show("Please select an account type.");
-                    return;
-                }
+                    User user = new User();
+                    user.SetUsername(Username.Text);
+                    user.SetPassword(Password.Text);
+                    user.Settype("CUST");
 
-                if (!decimal.TryParse(Balance.Text, out decimal initialBalance))
+                    UserRepository userrepo = new UserRepository();
+                    userrepo.AddPerson(user);
+                    user = userrepo.GetPerson(user);
+
+                    Customer customer = new Customer(user.GetId(), user.GetUsername(), user.GetPassword(), user.Gettype(), Mobilenumber.Text, Address.Text, Position.Text);
+                    CustomerRepository custrepo = new CustomerRepository();
+                    custrepo.AddCustomer(customer);
+
+                    // Convert selected item to AccountType enum
+                    AccountType type = (AccountType)Accounttype.SelectedItem;
+
+                    // Create the bank account using the factory
+                    BankAccount account = BankAccountFactory.CreateAccount(customer, type, parsedBalance);
+
+                    // Save the account to the repository
+                    BankRepository bankRepository = new BankRepository();
+                    bankRepository.AddAccount(account);
+
+                    reset();
+
+                    // Display success message
+                    MessageBox.Show($"Account created successfully!\nAccount Number:" + account.AccountNumber);
+
+                }
+                else
                 {
-                    MessageBox.Show("Please enter a valid balance amount.");
-                    return;
+                    MessageBox.Show($"Please make sure that all the fields are filled with data" );
                 }
-
-                // Convert selected item to AccountType enum
-                AccountType type = (AccountType)Accounttype.SelectedItem;
-
-
-                // Create the bank account using the factory
-                BankAccount account = BankAccountFactory.CreateAccount(customer, type, initialBalance);
-
-                // Save the account to the repository
-                BankRepository bankRepository = new BankRepository();
-                bankRepository.AddAccount(account);
-
-                // Display success message
-                MessageBox.Show($"Account created successfully!\nAccount Number:");
             }
             catch (Exception ex)
             {
@@ -148,19 +158,11 @@ namespace bank_mangement_system
             BindGrid();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            Mainmenu obj = new Mainmenu();
+            obj.Show();
+            this.Close();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace bank_mangement_system
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settimgs));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -51,17 +52,31 @@ namespace bank_mangement_system
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
+            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Location = new System.Drawing.Point(0, -37);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(165, 415);
             this.panel2.TabIndex = 16;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button4.Location = new System.Drawing.Point(12, 214);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(137, 40);
+            this.button4.TabIndex = 33;
+            this.button4.Text = "Main Menu";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(12, 137);
+            this.pictureBox5.Location = new System.Drawing.Point(12, 49);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(137, 125);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -89,6 +104,7 @@ namespace bank_mangement_system
             this.pictureBox4.Size = new System.Drawing.Size(25, 28);
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // Position
             // 
@@ -125,7 +141,6 @@ namespace bank_mangement_system
             this.label1.Size = new System.Drawing.Size(179, 20);
             this.label1.TabIndex = 27;
             this.label1.Text = "Admin New password";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Accounttype
             // 
@@ -202,10 +217,10 @@ namespace bank_mangement_system
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "settimgs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "settimgs";
-            this.Load += new System.EventHandler(this.settimgs_Load);
+            this.Text = "OMZ Bank";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -229,5 +244,6 @@ namespace bank_mangement_system
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

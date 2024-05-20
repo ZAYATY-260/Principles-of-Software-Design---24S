@@ -35,10 +35,10 @@ namespace bank_mangement_system
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.userINP = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.passINP = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,7 +69,6 @@ namespace bank_mangement_system
             this.label1.Size = new System.Drawing.Size(91, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "UserName";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox2
             // 
@@ -100,24 +99,16 @@ namespace bank_mangement_system
             this.panel1.Size = new System.Drawing.Size(204, 415);
             this.panel1.TabIndex = 6;
             // 
-            // label2
+            // pictureBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label2.Location = new System.Drawing.Point(267, 223);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // passINP
-            // 
-            this.passINP.Location = new System.Drawing.Point(271, 246);
-            this.passINP.Name = "passINP";
-            this.passINP.Size = new System.Drawing.Size(354, 20);
-            this.passINP.TabIndex = 4;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(33, 132);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 99);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // label8
             // 
@@ -130,16 +121,24 @@ namespace bank_mangement_system
             this.label8.TabIndex = 13;
             this.label8.Text = "OMZ Bank";
             // 
-            // pictureBox1
+            // label2
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(33, 132);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 99);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label2.Location = new System.Drawing.Point(267, 223);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 18);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Password";
+            // 
+            // passINP
+            // 
+            this.passINP.Location = new System.Drawing.Point(271, 246);
+            this.passINP.Name = "passINP";
+            this.passINP.Size = new System.Drawing.Size(354, 20);
+            this.passINP.TabIndex = 4;
+            this.passINP.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -151,7 +150,6 @@ namespace bank_mangement_system
             this.label3.Size = new System.Drawing.Size(168, 54);
             this.label3.TabIndex = 14;
             this.label3.Text = "lOG IN";
-            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // Login
             // 
@@ -168,10 +166,10 @@ namespace bank_mangement_system
             this.Controls.Add(this.label1);
             this.Controls.Add(this.login_button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
+            this.Text = "OMZ Bank";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

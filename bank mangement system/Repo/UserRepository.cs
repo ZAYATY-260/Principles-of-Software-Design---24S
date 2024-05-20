@@ -28,17 +28,17 @@ namespace bank_mangement_system.Repo
                 Db.Close_connection();
         }
 
-        public bool SearchPersons(User person)
+        public bool Login(User person)
         {
             bool userFound = false;
             DBconfig Db = new DBconfig();
             Db.Open_connection();
             AESEncryption aesEncryption = new AESEncryption();
 
-            string query = "SELECT  AdId,AdName, AdPass, AdType FROM AdminTbl WHERE AdName LIKE @SearchTerm";
+            string query = "SELECT  AdId,AdName, AdPass, AdType FROM AdminTbl WHERE AdName LIKE @username And AdPass LIKE @password";
             SqlCommand command = new SqlCommand(query, Db.Get_Conn());
-            command.Parameters.AddWithValue("@SearchTerm", "%" + aesEncryption.Encrypt(person.GetUsername()) + "%");
-
+            command.Parameters.AddWithValue("@username", "%" + aesEncryption.Encrypt(person.GetUsername()) + "%");
+            command.Parameters.AddWithValue("@password", "%" + aesEncryption.Encrypt(person.GetPassword()) + "%");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -88,7 +88,7 @@ namespace bank_mangement_system.Repo
                     person.SetPassword(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdPass"))));
                     person.Settype(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdType"))));
 
-                    Debug.WriteLine("User found in the database.");
+                    Debug.WriteLine("User found in the database." + person.Gettype());
                 }
             }
 
@@ -101,6 +101,7 @@ namespace bank_mangement_system.Repo
 
             return person;
         }
+
         //    public void EditPerson(User person)
         //    {
         //        using (var connection = new MySqlConnection(connectionString))
@@ -133,7 +134,7 @@ namespace bank_mangement_system.Repo
             Db.Open_connection();
             AESEncryption aesEncryption = new AESEncryption();
             List<User> users = new List<User>();
-            string query = "SELECT ADId, AdName FROM AdminTbl";
+            string query = "SELECT ADId, AdName , AdType FROM AdminTbl";
             SqlCommand command = new SqlCommand(query, Db.Get_Conn());
 
             using (SqlDataReader reader = command.ExecuteReader())
@@ -143,6 +144,7 @@ namespace bank_mangement_system.Repo
                     User user = new User();
                     user.SetId(reader.GetInt32(reader.GetOrdinal("AdId")));
                     user.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdName"))));
+                    user.Settype(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdType"))));
                     users.Add(user);
 
                     Debug.WriteLine("User found in the database.");

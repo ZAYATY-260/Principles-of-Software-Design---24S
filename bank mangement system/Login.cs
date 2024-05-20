@@ -35,9 +35,11 @@ namespace bank_mangement_system
 
                 user.SetUsername(userINP.Text);
                 user.SetPassword(passINP.Text);
+                
+               
 
                 UserRepository userrepo = new UserRepository();
-                bool Found = userrepo.SearchPersons(user);
+                bool Found = userrepo.Login(user);
                 if(Found)
                 {
                     MessageBox.Show("Login succesfully.");
@@ -59,44 +61,6 @@ namespace bank_mangement_system
             
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

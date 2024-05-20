@@ -128,7 +128,6 @@ namespace bank_mangement_system
             this.label4.Size = new System.Drawing.Size(273, 54);
             this.label4.TabIndex = 6;
             this.label4.Text = "Main Menu";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox4
             // 
@@ -151,7 +150,6 @@ namespace bank_mangement_system
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 31);
             this.label5.TabIndex = 11;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox5
             // 
@@ -190,10 +188,10 @@ namespace bank_mangement_system
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Mainmenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
-            this.Load += new System.EventHandler(this.Mainmenu_Load);
+            this.Text = " OMZ Bank";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
