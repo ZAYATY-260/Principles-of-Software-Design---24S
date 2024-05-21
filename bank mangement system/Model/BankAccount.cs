@@ -22,26 +22,27 @@ namespace bank_mangement_system.Model
                 Owner = owner;
             }
 
-        public BankAccount()
-        {
-        }
+            public BankAccount()
+            {
+            }
 
-        public void Deposit(decimal amount)
+             public void Deposit(decimal amount)
             {
                 Balance += amount;
                 Console.WriteLine($"Deposited {amount:C}. New balance: {Balance:C}");
             }
 
-            public void Withdraw(decimal amount)
+            public bool Withdraw(decimal amount)
             {
                 if (amount > Balance)
                 {
                     Console.WriteLine("Insufficient funds.");
-                    return;
+                    return false;
                 }
 
                 Balance -= amount;
                 Console.WriteLine($"Withdrawn {amount:C}. New balance: {Balance:C}");
+                return true;
             }
 
     }

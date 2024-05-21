@@ -32,25 +32,36 @@ namespace bank_mangement_system
 
         private void Transfer_Click(object sender, EventArgs e)
         {
-            BankRepository bankrepo = new BankRepository();
 
-            int From;
-            bool AccountFromisParsed = int.TryParse(AccountFrom.Text, out From);
 
-            decimal Amount;
-            bool AmountisParsed = decimal.TryParse(Amountfield.Text, out Amount);
-
-            int To;
-            bool AccountToisParsed = int.TryParse(AccountTo.Text, out To);
-
-            if(bankrepo.Transfer(From, To, Amount))
+            if(!string.IsNullOrEmpty(AccountFrom.Text) && !string.IsNullOrEmpty(Amountfield.Text) && !string.IsNullOrEmpty(AccountTo.Text))
             {
-                MessageBox.Show("Money Sent");
+                BankRepository bankrepo = new BankRepository();
+
+                int From;
+                bool AccountFromisParsed = int.TryParse(AccountFrom.Text, out From);
+
+                decimal Amount;
+                bool AmountisParsed = decimal.TryParse(Amountfield.Text, out Amount);
+
+                int To;
+                bool AccountToisParsed = int.TryParse(AccountTo.Text, out To);
+
+                if(AccountFromisParsed && AmountisParsed && AccountToisParsed)
+                {
+                       MessageBox.Show(bankrepo.Transfer(From, To, Amount));
+                }
+                else
+                {
+                     MessageBox.Show("Error: Please check that the data entered is a number.");
+                }
+
             }
             else
             {
-                MessageBox.Show("Error ");
+                 MessageBox.Show("Error: Fill all the fields.");
             }
+
 
             
 
