@@ -77,6 +77,12 @@
       <DependentUpon>Accounts.cs</DependentUpon>
     </Compile>
     <Compile Include="AESEncryption.cs" />
+    <Compile Include="bill_payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bill_payment.Designer.cs">
+      <DependentUpon>bill_payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBconfig.cs" />
     <Compile Include="Loading.cs">
       <SubType>Form</SubType>
@@ -121,6 +127,9 @@
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Accounts.resx">
       <DependentUpon>Accounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bill_payment.resx">
+      <DependentUpon>bill_payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
