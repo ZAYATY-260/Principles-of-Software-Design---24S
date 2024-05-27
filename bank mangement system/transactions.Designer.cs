@@ -31,7 +31,7 @@ namespace bank_mangement_system
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(transactions));
             this.button2 = new System.Windows.Forms.Button();
-            this.Username = new System.Windows.Forms.TextBox();
+            this.checkbalance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -40,20 +40,20 @@ namespace bank_mangement_system
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.balance = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.accountwithdraw = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.amountwithdraw = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.accountdeposit = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.amoutdeposit = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.AccountFrom = new System.Windows.Forms.TextBox();
@@ -85,13 +85,14 @@ namespace bank_mangement_system
             this.button2.TabIndex = 45;
             this.button2.Text = "check";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Username
+            // checkbalance
             // 
-            this.Username.Location = new System.Drawing.Point(23, 31);
-            this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(180, 20);
-            this.Username.TabIndex = 44;
+            this.checkbalance.Location = new System.Drawing.Point(23, 31);
+            this.checkbalance.Name = "checkbalance";
+            this.checkbalance.Size = new System.Drawing.Size(180, 20);
+            this.checkbalance.TabIndex = 44;
             // 
             // label1
             // 
@@ -165,8 +166,8 @@ namespace bank_mangement_system
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.Username);
+            this.panel2.Controls.Add(this.balance);
+            this.panel2.Controls.Add(this.checkbalance);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Location = new System.Drawing.Point(262, 93);
@@ -185,26 +186,27 @@ namespace bank_mangement_system
             this.button5.TabIndex = 47;
             this.button5.Text = "Reset";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label2
+            // balance
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(398, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 20);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "balance Label";
+            this.balance.AutoSize = true;
+            this.balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
+            this.balance.Location = new System.Drawing.Point(398, 18);
+            this.balance.Name = "balance";
+            this.balance.Size = new System.Drawing.Size(121, 20);
+            this.balance.TabIndex = 46;
+            this.balance.Text = "balance Label";
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.accountwithdraw);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.amountwithdraw);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(218, 224);
             this.panel3.Name = "panel3";
@@ -233,12 +235,12 @@ namespace bank_mangement_system
             this.label6.TabIndex = 48;
             this.label6.Text = "Amount";
             // 
-            // textBox2
+            // accountwithdraw
             // 
-            this.textBox2.Location = new System.Drawing.Point(201, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 47;
+            this.accountwithdraw.Location = new System.Drawing.Point(201, 49);
+            this.accountwithdraw.Name = "accountwithdraw";
+            this.accountwithdraw.Size = new System.Drawing.Size(180, 20);
+            this.accountwithdraw.TabIndex = 47;
             // 
             // label4
             // 
@@ -251,12 +253,12 @@ namespace bank_mangement_system
             this.label4.TabIndex = 46;
             this.label4.Text = "Account Number";
             // 
-            // textBox1
+            // amountwithdraw
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 44;
+            this.amountwithdraw.Location = new System.Drawing.Point(201, 84);
+            this.amountwithdraw.Name = "amountwithdraw";
+            this.amountwithdraw.Size = new System.Drawing.Size(180, 20);
+            this.amountwithdraw.TabIndex = 44;
             // 
             // button1
             // 
@@ -269,15 +271,16 @@ namespace bank_mangement_system
             this.button1.TabIndex = 45;
             this.button1.Text = "withdraw";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.accountdeposit);
             this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.textBox4);
+            this.panel4.Controls.Add(this.amoutdeposit);
             this.panel4.Controls.Add(this.button3);
             this.panel4.Location = new System.Drawing.Point(645, 225);
             this.panel4.Name = "panel4";
@@ -306,12 +309,12 @@ namespace bank_mangement_system
             this.label7.TabIndex = 48;
             this.label7.Text = "Amount";
             // 
-            // textBox3
+            // accountdeposit
             // 
-            this.textBox3.Location = new System.Drawing.Point(201, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(180, 20);
-            this.textBox3.TabIndex = 47;
+            this.accountdeposit.Location = new System.Drawing.Point(201, 49);
+            this.accountdeposit.Name = "accountdeposit";
+            this.accountdeposit.Size = new System.Drawing.Size(180, 20);
+            this.accountdeposit.TabIndex = 47;
             // 
             // label9
             // 
@@ -324,12 +327,12 @@ namespace bank_mangement_system
             this.label9.TabIndex = 46;
             this.label9.Text = "Account Number";
             // 
-            // textBox4
+            // amoutdeposit
             // 
-            this.textBox4.Location = new System.Drawing.Point(201, 84);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
-            this.textBox4.TabIndex = 44;
+            this.amoutdeposit.Location = new System.Drawing.Point(201, 84);
+            this.amoutdeposit.Name = "amoutdeposit";
+            this.amoutdeposit.Size = new System.Drawing.Size(180, 20);
+            this.amoutdeposit.TabIndex = 44;
             // 
             // button3
             // 
@@ -342,6 +345,7 @@ namespace bank_mangement_system
             this.button3.TabIndex = 45;
             this.button3.Text = "Deposit";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel5
             // 
@@ -486,25 +490,25 @@ namespace bank_mangement_system
         #endregion
 
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox Username;
+        private System.Windows.Forms.TextBox checkbalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label balance;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox amountwithdraw;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox accountwithdraw;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox accountdeposit;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox amoutdeposit;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label11;

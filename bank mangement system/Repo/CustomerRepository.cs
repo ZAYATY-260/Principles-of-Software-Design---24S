@@ -28,6 +28,44 @@ namespace bank_mangement_system.Repo
             Db.Close_connection();
         }
 
+
+        public String EditPerson(Customer customer)
+        {
+            try
+            {
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
+                AESEncryption aesEncryption = new AESEncryption();
+
+                if(SearchCustomer(customer))
+                {
+                    string query = "UPDATE CustTbl SET Position = @Position, Address = @Address, MobileNum = @MobilePhone WHERE Id = @Id";
+                    SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+
+                    command.Parameters.AddWithValue("@Id", customer.Cust_id);
+                    command.Parameters.AddWithValue("@Position", aesEncryption.Encrypt(customer.Position));
+                    command.Parameters.AddWithValue("@Address", aesEncryption.Encrypt(customer.Address));
+                    command.Parameters.AddWithValue("@MobilePhone", aesEncryption.Encrypt(customer.MobilePhone));
+                    command.ExecuteNonQuery();
+
+                    Db.Close_connection();
+
+                    return "  Customer data is updated  , ";
+                }
+                else
+                {
+                    return "Customer is not found";
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error adding account: " + ex.Message);
+                throw;
+            }
+        }
+
         public bool SearchCustomer(Customer customer)
         {
             bool customerFound = false;
@@ -35,27 +73,26 @@ namespace bank_mangement_system.Repo
             Db.Open_connection();
             AESEncryption aesEncryption = new AESEncryption();
 
-            string query = "SELECT CustId, CustName, Address, MobilePhone FROM CustomerTbl WHERE CustName LIKE @SearchTerm";
+            string query = "SELECT  Position , Address , MobileNum FROM CustTbl WHERE Id = @Id";
             SqlCommand command = new SqlCommand(query, Db.Get_Conn());
-            command.Parameters.AddWithValue("@SearchTerm", "%" + aesEncryption.Encrypt(customer.GetUsername()) + "%");
+            command.Parameters.AddWithValue("@Id",  customer.Cust_id);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     customerFound = true;
-                    customer.SetId(reader.GetInt32(reader.GetOrdinal("CustId")));
-                    customer.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("CustName"))));
+                    customer.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("Position"))));
                     customer.Address = aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("Address")));
-                    customer.MobilePhone = aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("MobilePhone")));
+                    customer.MobilePhone = aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("MobileNum")));
 
-                    Debug.WriteLine("Customer found in the database.");
+                    Debug.WriteLine("Customer is found in the database.");
                 }
             }
 
             if (!customerFound)
             {
-                Debug.WriteLine("Customer not found in the database.");
+                Debug.WriteLine("Customer is not found in the database.");
             }
             Db.Close_connection();
 

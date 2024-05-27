@@ -35,10 +35,11 @@ namespace bank_mangement_system.Repo
             Db.Open_connection();
             AESEncryption aesEncryption = new AESEncryption();
 
-            string query = "SELECT  AdId,AdName, AdPass, AdType FROM AdminTbl WHERE AdName LIKE @username And AdPass LIKE @password";
+            string query = "SELECT  AdId,AdName, AdPass, AdType FROM AdminTbl WHERE AdName = @username And AdPass = @password AND Adtype = @Adtype";
             SqlCommand command = new SqlCommand(query, Db.Get_Conn());
-            command.Parameters.AddWithValue("@username", "%" + aesEncryption.Encrypt(person.GetUsername()) + "%");
-            command.Parameters.AddWithValue("@password", "%" + aesEncryption.Encrypt(person.GetPassword()) + "%");
+            command.Parameters.AddWithValue("@username" , aesEncryption.Encrypt(person.GetUsername()));
+            command.Parameters.AddWithValue("@password" , aesEncryption.Encrypt(person.GetPassword()));
+            command.Parameters.AddWithValue("@Adtype", aesEncryption.Encrypt("EMP"));
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -102,19 +103,43 @@ namespace bank_mangement_system.Repo
             return person;
         }
 
-        //    public void EditPerson(User person)
-        //    {
-        //        using (var connection = new MySqlConnection(connectionString))
-        //        {
-        //            connection.Open();
-        //            string query = "UPDATE Persons SET Name = @Name, Age = @Age WHERE Id = @Id";
-        //            MySqlCommand command = new MySqlCommand(query, connection);
-        //            command.Parameters.AddWithValue("@Name", person.Name);
-        //            command.Parameters.AddWithValue("@Age", person.Age);
-        //            command.Parameters.AddWithValue("@Id", person.Id);
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
+        public String EditPerson(User person)
+        {
+            try
+            {
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
+                AESEncryption aesEncryption = new AESEncryption();
+                User user = GetPerson(person);
+                if (user.GetId() !=  0)
+                {
+                    
+                    string query = "UPDATE AdminTbl SET AdName = @Username, AdPass = @Password, AdType = @Type WHERE Adid = @Id";
+                    SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+
+                    command.Parameters.AddWithValue("@Id", person.GetId());
+                    command.Parameters.AddWithValue("@Username", aesEncryption.Encrypt(person.GetUsername()));
+                    command.Parameters.AddWithValue("@Password", aesEncryption.Encrypt(person.GetPassword()));
+                    command.Parameters.AddWithValue("@Type", aesEncryption.Encrypt(person.Gettype()));
+                    command.ExecuteNonQuery();
+
+                    Db.Close_connection();
+
+                    return " User data is updated  , ";
+                }
+                else
+                {
+                    return "User is not found";
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error adding account: " + ex.Message);
+                throw;
+            }
+        }
 
         //    public void DeletePerson(int id)
         //    {
@@ -134,9 +159,9 @@ namespace bank_mangement_system.Repo
             Db.Open_connection();
             AESEncryption aesEncryption = new AESEncryption();
             List<User> users = new List<User>();
-            string query = "SELECT ADId, AdName , AdType FROM AdminTbl";
+            string query = "SELECT ADId, AdName , AdType ,AdPass  FROM AdminTbl WHERE AdType = @AdType";
             SqlCommand command = new SqlCommand(query, Db.Get_Conn());
-
+            command.Parameters.AddWithValue("@Adtype", aesEncryption.Encrypt("CUST"));
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -145,6 +170,7 @@ namespace bank_mangement_system.Repo
                     user.SetId(reader.GetInt32(reader.GetOrdinal("AdId")));
                     user.SetUsername(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdName"))));
                     user.Settype(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdType"))));
+                    user.SetPassword(aesEncryption.Decrypt(reader.GetString(reader.GetOrdinal("AdPass"))));
                     users.Add(user);
 
                     Debug.WriteLine("User found in the database.");

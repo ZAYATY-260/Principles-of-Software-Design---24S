@@ -20,6 +20,12 @@ namespace bank_mangement_system.Model
             return new BankAccount(owner, accountNumber, type, initialBalance);
         }
 
+        public static BankAccount getAccount(Customer owner, AccountType type, decimal initialBalance , int accountNumber)
+        {
+   
+            return new BankAccount(owner, accountNumber, type, initialBalance);
+        }
+
 
         private static int GenerateAccountNumber()
         {

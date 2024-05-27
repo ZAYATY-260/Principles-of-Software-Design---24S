@@ -93,7 +93,42 @@ namespace bank_mangement_system.Repo
           
         }
 
+        public String EditPerson(BankAccount account)
+        {
+            try
+            {
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
 
+                BankAccount account_found = SearchAccount(account.AccountNumber);
+
+                if (account_found.AccountNumber != 0)
+                {
+                    string query = "UPDATE Accounts SET  balance = @balance, Accounttype = @Accounttype WHERE custid = @Id";
+                    SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+                    Customer cust = account.Owner;
+                    command.Parameters.AddWithValue("@Id", cust.Cust_id);
+                    command.Parameters.AddWithValue("@Accountnum", account.AccountNumber);
+                    command.Parameters.AddWithValue("@balance", account.Balance);
+                    command.Parameters.AddWithValue("@Accounttype", account.Type);
+                    command.ExecuteNonQuery();
+                    Debug.WriteLine(account.AccountNumber + ":- updated in the database.");
+                    Db.Close_connection();
+                    return " Account is updated.";
+                   
+                }
+                else
+                {
+                    return "Account is not found.";
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error adding account: " + ex.Message);
+                throw;
+            }
+        }
 
         public String Transfer(int From , int To , decimal amount)
         {
@@ -144,8 +179,92 @@ namespace bank_mangement_system.Repo
             }
         }
 
+        public List<History> gethistory()
+        {
+            try
+            {
 
-        public void UpdateAccountBalance(BankAccount account)
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
+
+                List<History> history_list = new List<History>();
+                string query = "SELECT [From], [To], [Amount] FROM History";
+                
+                SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        History history = new History();
+
+                        history.from = reader.GetInt32(reader.GetOrdinal("From"));
+                        history.to = reader.GetInt32(reader.GetOrdinal("To"));
+                        history.Amount = reader.GetDecimal(reader.GetOrdinal("Amount"));
+                        history_list.Add(history);
+
+                        Debug.WriteLine("Customer found in the database.");
+                    }
+                }
+
+                Debug.WriteLine(history_list);
+                return history_list;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in getting data: " + ex.Message);
+                throw;
+            }
+        }
+
+        public String paybills(int From, int To, decimal Amount)
+        {
+            try
+            {
+
+                BankAccount account_from = SearchAccount(From);
+                Debug.WriteLine(From + " send to " + To + " :- " + Amount);
+                if (account_from.AccountNumber != 0)
+                {
+
+                    DBconfig Db = new DBconfig();
+                    Db.Open_connection();
+
+                    if (account_from.Withdraw(Amount))
+                    {
+                        string query = "INSERT INTO [History] ([From], [To], [Amount]) VALUES (@Fromdata, @Todata, @Amountdata)";
+                        SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+                        command.Parameters.AddWithValue("@Fromdata", From);
+                        command.Parameters.AddWithValue("@Todata", To);
+                        command.Parameters.AddWithValue("@Amountdata", Amount);
+                        command.ExecuteNonQuery();
+
+                        Debug.WriteLine(From + " send to " + To + " :- " + Amount);
+
+                        Db.Close_connection();
+
+                        UpdateAccountBalance(account_from);
+
+
+                        return "money sent successfully";
+                    }
+                    else
+                    {
+                        return "Insufficient funds.";
+                    }
+                }
+
+                return "Account is not found.";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in tranfer: " + ex.Message);
+                throw;
+            }
+        }
+    
+
+    public void UpdateAccountBalance(BankAccount account)
         {
             try
             {
@@ -215,6 +334,81 @@ namespace bank_mangement_system.Repo
 
             return accountnumbers;
 
+        }
+
+        public String withdraw(int From, decimal amount)
+        {
+            try
+            {
+
+                BankAccount account_from = SearchAccount(From);
+
+                if (account_from.AccountNumber != 0)
+                {
+
+                    DBconfig Db = new DBconfig();
+                    Db.Open_connection();
+
+                    if (account_from.Withdraw(amount))
+                    {
+
+                        UpdateAccountBalance(account_from);
+
+                        return "money withdrawn successfully";
+                    }
+                    else
+                    {
+                        return "Insufficient funds.";
+                    }
+                }
+                else
+                {
+                    return "Account is not found ";
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in tranfer: " + ex.Message);
+                throw;
+            }
+        }
+
+        public String deposit(int To, decimal amount)
+        {
+            try
+            {
+
+                BankAccount account_to = SearchAccount(To);
+
+                if (account_to.AccountNumber != 0)
+                {
+
+                        DBconfig Db = new DBconfig();
+                        Db.Open_connection();
+                    
+
+                        account_to.Deposit(amount);
+
+
+                        UpdateAccountBalance(account_to);
+
+                        return "money add successfully";
+                }
+                else
+                {
+                    return "Account is not found ";
+                }
+                
+
+            
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in depositing: " + ex.Message);
+                throw;
+            }
         }
 
     }

@@ -8,7 +8,7 @@ namespace bank_mangement_system.Model
 {
     public enum AccountType
     {
-        Checking,
+        Current,
         Savings
     }
 }

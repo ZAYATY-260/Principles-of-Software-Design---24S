@@ -43,5 +43,26 @@ namespace bank_mangement_system
             obj.Show();
             this.Hide();
         }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            bill_payment obj = new bill_payment();
+            this.Close();
+            obj.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            this.Close();
+            obj.Show();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            history obj = new history();
+            obj.Show();
+            this.Close();
+        }
     }
 }

@@ -72,3 +72,4 @@ C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\
 C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.application
 C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.exe
 C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.pdb
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.history.resources

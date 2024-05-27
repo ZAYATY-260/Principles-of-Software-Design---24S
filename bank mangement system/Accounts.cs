@@ -49,7 +49,8 @@ namespace bank_mangement_system
                     dataGridView1.Columns.Add("IDColumn", "ID");
                     dataGridView1.Columns.Add("AccountNumberColumn", "AccountNumber");
                     dataGridView1.Columns.Add("UsernameColumn", "Username");
-                    dataGridView1.Columns.Add("PositionColumn", "Type");
+                    dataGridView1.Columns.Add("PasswordColumn", "Password");
+                    dataGridView1.Columns.Add("TypeColumn", "Type");
                     dataGridView1.Columns.Add("AddressColumn", "Address");
                     dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
                     dataGridView1.Columns.Add("PositionColumn", "Position");
@@ -69,6 +70,7 @@ namespace bank_mangement_system
                                         user.GetId(),
                                         account.AccountNumber,
                                         user.GetUsername(),
+                                        user.GetPassword(),
                                         user.Gettype(),
                                         customer.GetAddress(),
                                         customer.GetMobilePhone(),
@@ -126,7 +128,9 @@ namespace bank_mangement_system
                     userrepo.AddPerson(user);
                     user = userrepo.GetPerson(user);
 
-                    Customer customer = new Customer(user.GetId(), user.GetUsername(), user.GetPassword(), user.Gettype(), Mobilenumber.Text, Address.Text, Position.Text);
+
+
+                    Customer customer = new Customer(user.GetId(), user.GetUsername(), user.GetPassword(), user.Gettype(), Address.Text ,  Mobilenumber.Text , Position.Text);
                     CustomerRepository custrepo = new CustomerRepository();
                     custrepo.AddCustomer(customer);
 
@@ -164,6 +168,7 @@ namespace bank_mangement_system
 
 
         string accnum;
+        string id;
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the click is not on header row
@@ -171,17 +176,22 @@ namespace bank_mangement_system
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                // Assuming you have text boxes named txtID, txtAccountNumber, txtUsername, txtType, txtAddress, txtMobilePhone, txtPosition, txtBalance
-                //txtID.Text = row.Cells["IDColumn"].Value.ToString();
-                //txtAccountNumber.Text = row.Cells["AccountNumberColumn"].Value.ToString();
-                Username.Text = row.Cells["UsernameColumn"].Value.ToString();
-                //txtType.Text = row.Cells["TypeColumn"].Value.ToString();
-                Address.Text = row.Cells["AddressColumn"].Value.ToString();
-                Mobilenumber.Text = row.Cells["MobilePhoneColumn"].Value.ToString();
-                Position.Text = row.Cells["PositionColumn"].Value.ToString();
-                Balance.Text = row.Cells["BalanceColumn"].Value.ToString();
-                accnum = row.Cells["AccountNumberColumn"].Value.ToString();
+                // Validate and assign values to controls
+                Username.Text = row.Cells["UsernameColumn"].Value?.ToString() ?? "";
+                Accounttype.SelectedItem = row.Cells["TypeColumn"].Value?.ToString() ?? "";
+                Password.Text = row.Cells["PasswordColumn"].Value?.ToString() ?? "";
+                Address.Text = row.Cells["AddressColumn"].Value?.ToString() ?? "";
+                Mobilenumber.Text = row.Cells["MobilePhoneColumn"].Value?.ToString() ?? "";
+                Position.Text = row.Cells["PositionColumn"].Value?.ToString() ?? "";
+                Balance.Text = row.Cells["BalanceColumn"].Value?.ToString() ?? "";
+
+                // Validate and assign values to variables
+                accnum = row.Cells["AccountNumberColumn"].Value?.ToString() ?? "";
+                id = row.Cells["IDColumn"].Value?.ToString() ?? "";
             }
+
+
+            MessageBox.Show(id);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -199,7 +209,7 @@ namespace bank_mangement_system
 
                     reset();
 
-                    MessageBox.Show($"Account created successfully!\nAccount Number:");
+                    MessageBox.Show($"Account deleted successfully!\nAccount Number:" + accnumm);
 
                 }
                 else
@@ -210,6 +220,55 @@ namespace bank_mangement_system
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+            BindGrid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            decimal parsedBalance;
+            bool isParsed = decimal.TryParse(Balance.Text, out parsedBalance);
+            if (Accounttype.SelectedItem != null && isParsed && !String.IsNullOrWhiteSpace(Password.Text)
+                && !String.IsNullOrWhiteSpace(Username.Text) && !String.IsNullOrWhiteSpace(Mobilenumber.Text)
+                && !String.IsNullOrWhiteSpace(Address.Text) && !String.IsNullOrWhiteSpace(Position.Text))
+            {
+
+                int new_id;
+                bool a = int.TryParse(id, out new_id);
+
+                User user = new User();
+                user.SetId(new_id);
+                user.SetUsername(Username.Text);
+                user.SetPassword(Password.Text);
+                user.Settype("CUST");
+
+                UserRepository userrepo = new UserRepository();
+
+
+                Customer customer = new Customer(user.GetId(), user.GetUsername(), user.GetPassword(), user.Gettype(), Address.Text, Mobilenumber.Text, Position.Text);
+                CustomerRepository custrepo = new CustomerRepository();
+            
+                AccountType type = (AccountType)Accounttype.SelectedItem;
+
+                BankRepository bankRepository = new BankRepository();
+
+                int new_accnum;
+                bool b = int.TryParse(accnum, out new_accnum);
+
+                BankAccount account = BankAccountFactory.getAccount(customer, type, parsedBalance, new_accnum);
+
+             
+                MessageBox.Show(userrepo.EditPerson(user) + custrepo.EditPerson(customer) + bankRepository.EditPerson(account)  );
+
+                reset();
+
+                MessageBox.Show($"Account updated successfully!\nAccount Number:" + account.AccountNumber);
+
+            }
+            else
+            {
+                MessageBox.Show($"Please make sure that all the fields are filled with data");
             }
 
             BindGrid();

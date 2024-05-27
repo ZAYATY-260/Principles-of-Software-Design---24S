@@ -38,15 +38,17 @@ namespace bank_mangement_system
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Accountfrom = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Accountto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Amountfield = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Accounttype = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,6 +77,7 @@ namespace bank_mangement_system
             this.pictureBox4.Size = new System.Drawing.Size(25, 28);
             this.pictureBox4.TabIndex = 25;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // label4
             // 
@@ -136,17 +139,37 @@ namespace bank_mangement_system
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.Accounttype);
+            this.panel3.Controls.Add(this.Accountfrom);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.Accountto);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.Amountfield);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(259, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(443, 167);
+            this.panel3.Size = new System.Drawing.Size(443, 209);
             this.panel3.TabIndex = 49;
+            // 
+            // Accountfrom
+            // 
+            this.Accountfrom.Location = new System.Drawing.Point(201, 62);
+            this.Accountfrom.Name = "Accountfrom";
+            this.Accountfrom.Size = new System.Drawing.Size(180, 20);
+            this.Accountfrom.TabIndex = 52;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(15, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 20);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "from";
             // 
             // label1
             // 
@@ -164,62 +187,49 @@ namespace bank_mangement_system
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(15, 84);
+            this.label6.Location = new System.Drawing.Point(15, 129);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 20);
             this.label6.TabIndex = 48;
             this.label6.Text = "Amount";
             // 
-            // textBox2
+            // Accountto
             // 
-            this.textBox2.Location = new System.Drawing.Point(201, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 47;
+            this.Accountto.Location = new System.Drawing.Point(201, 94);
+            this.Accountto.Name = "Accountto";
+            this.Accountto.Size = new System.Drawing.Size(180, 20);
+            this.Accountto.TabIndex = 47;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(15, 49);
+            this.label2.Location = new System.Drawing.Point(15, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 20);
+            this.label2.Size = new System.Drawing.Size(25, 20);
             this.label2.TabIndex = 46;
-            this.label2.Text = "Account Number";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Text = "to";
             // 
-            // textBox1
+            // Amountfield
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 44;
+            this.Amountfield.Location = new System.Drawing.Point(201, 129);
+            this.Amountfield.Name = "Amountfield";
+            this.Amountfield.Size = new System.Drawing.Size(180, 20);
+            this.Amountfield.TabIndex = 44;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(0)))));
             this.button1.Font = new System.Drawing.Font("Algerian", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(249, 111);
+            this.button1.Location = new System.Drawing.Point(249, 164);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 40);
             this.button1.TabIndex = 45;
             this.button1.Text = "Pay";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "phone bills",
-            "home bills"});
-            this.comboBox1.Location = new System.Drawing.Point(201, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 21);
-            this.comboBox1.TabIndex = 50;
-            this.comboBox1.Text = "Bill Type";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox2
             // 
@@ -242,7 +252,21 @@ namespace bank_mangement_system
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 51;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // Accounttype
+            // 
+            this.Accounttype.FormattingEnabled = true;
+            this.Accounttype.Items.AddRange(new object[] {
+            "Phone Bill",
+            "Electricity Bill",
+            "Water Bill",
+            "Insurence Payment"});
+            this.Accounttype.Location = new System.Drawing.Point(201, 32);
+            this.Accounttype.Name = "Accounttype";
+            this.Accounttype.Size = new System.Drawing.Size(180, 21);
+            this.Accounttype.TabIndex = 52;
+            this.Accounttype.Text = "Bill type";
+            this.Accounttype.SelectedIndexChanged += new System.EventHandler(this.Accounttype_SelectedIndexChanged);
             // 
             // bill_payment
             // 
@@ -258,6 +282,7 @@ namespace bank_mangement_system
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "bill_payment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "bill_payment";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -282,14 +307,16 @@ namespace bank_mangement_system
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Accountto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Amountfield;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox Accountfrom;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox Accounttype;
     }
 }

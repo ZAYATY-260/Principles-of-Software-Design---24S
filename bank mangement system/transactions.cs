@@ -1,4 +1,5 @@
-﻿using bank_mangement_system.Repo;
+﻿using bank_mangement_system.Model;
+using bank_mangement_system.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,7 @@ namespace bank_mangement_system
                 if(AccountFromisParsed && AmountisParsed && AccountToisParsed)
                 {
                        MessageBox.Show(bankrepo.Transfer(From, To, Amount));
+                    rest();
                 }
                 else
                 {
@@ -67,6 +69,68 @@ namespace bank_mangement_system
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BankRepository bankrepo = new BankRepository();
 
+            int From;
+            bool AccountFromisParsed = int.TryParse(accountdeposit.Text, out From);
+
+            decimal Amount;
+            bool AmountisParsed = decimal.TryParse(amoutdeposit.Text, out Amount);
+
+
+            MessageBox.Show(bankrepo.deposit(From , Amount));
+            rest();
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BankRepository bankrepo = new BankRepository();
+
+            int From;
+            bool AccountFromisParsed = int.TryParse(accountwithdraw.Text, out From);
+
+            decimal Amount;
+            bool AmountisParsed = decimal.TryParse(amountwithdraw.Text, out Amount);
+
+
+            MessageBox.Show(bankrepo.withdraw(From, Amount));
+            rest();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BankRepository bankrepo = new BankRepository();
+            int From;
+            bool AccountFromisParsed = int.TryParse(checkbalance.Text, out From);
+            
+            BankAccount account = bankrepo.SearchAccount(From);
+
+            balance.Text = account.Balance.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            balance.Text = "balance label";
+            checkbalance.Text = "";
+        }
+
+        public void rest()
+        {
+            balance.Text = "balance label";
+            checkbalance.Text = "";
+
+            accountwithdraw.Text = "";
+            amountwithdraw.Text = "";
+
+            accountdeposit.Text = "";
+            amoutdeposit.Text = "";
+
+            AccountFrom.Text = "";
+            Amountfield.Text = "";
+            AccountTo.Text = "";
+        }
     }
 }
