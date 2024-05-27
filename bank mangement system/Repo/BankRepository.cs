@@ -38,6 +38,28 @@ namespace bank_mangement_system.Repo
             }
         }
 
+        public void DeleteAccount(int accnum)
+        {
+            try
+            {
+                DBconfig Db = new DBconfig();
+                Db.Open_connection();
+
+                string query = "Delete FROM Accounts WHERE Accountnum = @Accountnum";
+                SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+
+                command.Parameters.AddWithValue("@Accountnum", accnum);
+
+                command.ExecuteNonQuery();
+
+                Db.Close_connection();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error adding account: " + ex.Message);
+                throw;
+            }
+        }
         public BankAccount SearchAccount(int Accountnumber)
         {
             try

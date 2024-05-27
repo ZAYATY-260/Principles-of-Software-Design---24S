@@ -51,3 +51,24 @@ C:\Users\Egy Sky\Desktop\priciple project new clone\bank mangement system\obj\De
 C:\Users\Egy Sky\Desktop\priciple project new clone\bank mangement system\obj\Debug\bank mangement system.application
 C:\Users\Egy Sky\Desktop\priciple project new clone\bank mangement system\obj\Debug\bank mangement system.exe
 C:\Users\Egy Sky\Desktop\priciple project new clone\bank mangement system\obj\Debug\bank mangement system.pdb
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\bin\Debug\bank mangement system.exe.config
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\bin\Debug\bank mangement system.exe.manifest
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\bin\Debug\bank mangement system.application
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\bin\Debug\bank mangement system.exe
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\bin\Debug\bank mangement system.pdb
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.csproj.AssemblyReference.cache
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.Accounts.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.bill_payment.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.Loading.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.Login.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.Mainmenu.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.Properties.Resources.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.settimgs.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank_mangement_system.transactions.resources
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.csproj.GenerateResource.cache
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.csproj.CoreCompileInputs.cache
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.TrustInfo.xml
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.exe.manifest
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.application
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.exe
+C:\Users\Zeyad\OneDrive\Desktop\new clione principles\bank mangement system\obj\Debug\bank mangement system.pdb

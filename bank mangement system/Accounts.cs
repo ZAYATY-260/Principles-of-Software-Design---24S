@@ -163,6 +163,7 @@ namespace bank_mangement_system
         }
 
 
+        string accnum;
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the click is not on header row
@@ -179,7 +180,39 @@ namespace bank_mangement_system
                 Mobilenumber.Text = row.Cells["MobilePhoneColumn"].Value.ToString();
                 Position.Text = row.Cells["PositionColumn"].Value.ToString();
                 Balance.Text = row.Cells["BalanceColumn"].Value.ToString();
+                accnum = row.Cells["AccountNumberColumn"].Value.ToString();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (accnum != null)
+                {
+                    int parsedBalance;
+                    bool isParsed = int.TryParse(accnum, out parsedBalance);
+                    int accnumm = parsedBalance;
+                    BankRepository bankRepository = new BankRepository();
+
+                    bankRepository.DeleteAccount(accnumm);
+
+                    reset();
+
+                    MessageBox.Show($"Account created successfully!\nAccount Number:");
+
+                }
+                else
+                {
+                    MessageBox.Show($"Please make sure that all the fields are filled with data");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+            BindGrid();
         }
     }
 }
