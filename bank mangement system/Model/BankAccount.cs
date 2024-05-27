@@ -26,7 +26,7 @@ namespace bank_mangement_system.Model
             {
             }
 
-             public void Deposit(decimal amount)
+            public void Deposit(decimal amount)
             {
                 Balance += amount;
                 Console.WriteLine($"Deposited {amount:C}. New balance: {Balance:C}");

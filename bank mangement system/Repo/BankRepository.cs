@@ -17,6 +17,7 @@ namespace bank_mangement_system.Repo
             { 
                 DBconfig Db = new DBconfig();
                 Db.Open_connection();
+                
 
                 string query = "INSERT INTO Accounts (custid,Accountnum, balance, Accounttype) VALUES (@Id, @Accountnum ,@balance, @Accounttype)";
                 SqlCommand command = new SqlCommand(query, Db.Get_Conn());
@@ -171,6 +172,27 @@ namespace bank_mangement_system.Repo
 
             Debug.WriteLine(Account);
             return Account;
+        }
+
+        public List<int> getAllaccountnumbers()
+        {
+            DBconfig Db = new DBconfig();
+            Db.Open_connection();
+
+            List<int> accountnumbers = new List<int>();
+            string query = "SELECT Accountnum FROM  Accounts";
+            SqlCommand command = new SqlCommand(query, Db.Get_Conn());
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    accountnumbers.Add(reader.GetInt32(reader.GetOrdinal("Accountnum")));
+                }
+            }
+
+            return accountnumbers;
+
         }
 
     }

@@ -50,8 +50,8 @@ namespace bank_mangement_system
                     dataGridView1.Columns.Add("UsernameColumn", "Username");
                     dataGridView1.Columns.Add("PositionColumn", "Type");
                     dataGridView1.Columns.Add("AddressColumn", "Address");
-                   dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
-                   dataGridView1.Columns.Add("PositionColumn", "Position");
+                    dataGridView1.Columns.Add("MobilePhoneColumn", "Mobile Phone");
+                    dataGridView1.Columns.Add("PositionColumn", "Position");
                     dataGridView1.Columns.Add("BalanceColumn", "Balance");
 
                     dataGridView1.Rows.Clear();
@@ -129,19 +129,21 @@ namespace bank_mangement_system
                     CustomerRepository custrepo = new CustomerRepository();
                     custrepo.AddCustomer(customer);
 
-                    // Convert selected item to AccountType enum
+                
                     AccountType type = (AccountType)Accounttype.SelectedItem;
 
-                    // Create the bank account using the factory
-                    BankAccount account = BankAccountFactory.CreateAccount(customer, type, parsedBalance);
 
-                    // Save the account to the repository
                     BankRepository bankRepository = new BankRepository();
+                    BankAccountFactory b = new BankAccountFactory();
+                    
+                    BankAccount account = BankAccountFactory.CreateAccount(customer, type, parsedBalance , bankRepository.getAllaccountnumbers());
+
+                    
                     bankRepository.AddAccount(account);
 
                     reset();
 
-                    // Display success message
+                  
                     MessageBox.Show($"Account created successfully!\nAccount Number:" + account.AccountNumber);
 
                 }

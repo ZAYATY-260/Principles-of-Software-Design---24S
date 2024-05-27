@@ -8,19 +8,32 @@ namespace bank_mangement_system.Model
 {
     class BankAccountFactory
     {
-        private static int accountNumberSeed = 1000;
+        private static List<int> acountnumbers ;
+        private static Random random = new Random();
+
 
         // Method to create a new bank account
-        public static BankAccount CreateAccount(Customer owner, AccountType type, decimal initialBalance)
+        public static BankAccount CreateAccount(Customer owner, AccountType type, decimal initialBalance , List<int> accountNumbers)
         {
+            acountnumbers = accountNumbers;
             int accountNumber = GenerateAccountNumber();
             return new BankAccount(owner, accountNumber, type, initialBalance);
         }
 
-        // Method to generate a unique account number
+
         private static int GenerateAccountNumber()
         {
-            return accountNumberSeed++;
+             int randomnumber = random.Next(1, 10000);
+
+                foreach (var account in acountnumbers)
+                {
+                    if(account == randomnumber)
+                    {
+                        GenerateAccountNumber();
+                    }
+                }
+
+            return randomnumber;
         }
     }
 }
